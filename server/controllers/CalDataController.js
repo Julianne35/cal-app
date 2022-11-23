@@ -1,4 +1,3 @@
-// IN USE
 const mongoose = require("mongoose");
 const CalData = mongoose.model("calander");
 
@@ -94,3 +93,20 @@ exports.updatePost = (req, res) => {
     }
   );
 };
+
+//delete post
+exports.deletePost = (req, res) => {
+  let infoID = req.params.calId;
+   CalData.deleteOne({ _id: infoID }, (err, data) => {
+    if (err) {
+      res.status(500).json({
+        message: "error data was not deleted",
+      });
+    } else {
+      res.status(200).json({
+        message: "Post deleted.",
+        data,
+      });
+    }
+  });
+};  
