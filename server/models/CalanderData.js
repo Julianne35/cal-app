@@ -1,34 +1,32 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-let calData = new Schema(
+const eventDataSchema = new mongoose.Schema(
   {
-    contactName: {
+    contactname: {
       type: String,
       required: true,
       trim: true,
       default: "",
     },
-    eventName: {
+    eventname: {
       type: String,
       required: true,
       trim: true,
       default: "",
     },
-    contactPhone: {
+    contactphone: {
       type: Number,
       required: true,
       trim: true,
       default: "",
     },
-    contactEmail: {
+    contactemail: {
       type: String,
       required: true,
       trim: true,
       default: "",
     },
-    eventAddress: [
+    eventaddress: [
       {
         street: { type: String, required: true, trim: true, default: "" },
         city: { type: String, required: true, trim: true, default: "" },
@@ -36,43 +34,43 @@ let calData = new Schema(
         zipcode: { type: Number, required: true },
       },
     ],
-    eventTime: {
+    eventtime: {
       type: Number,
       required: true,
       trim: true,
       default: "",
     },
-    eventDate: {
+    eventdate: {
       type: Date,
       required: true,
       trim: true,
       default: "",
     },
-    eventDescription: {
+    eventdescription: {
       type: String,
       required: true,
       trim: true,
       default: "",
     },
-    eventImage: [
+    eventimage: [
       {
         image: { type: String, required: false },
-        refId: { type: mongoose.Types.ObjectId, required: false },
+        refid: { type: mongoose.Types.ObjectId, required: false },
       },
     ],
-    isLiked: {
+    isliked: {
       type: Boolean,
       required: false,
     },
-    isOverlaped: {
+    isoverlaped: {
       type: Boolean,
       required: false,
     },
-    isApproved: {
+    isapproved: {
       type: Boolean,
       required: false,
     },
-    eventLink: {
+    eventlink: {
       type: String,
       required: false,
       trim: true,
@@ -82,5 +80,4 @@ let calData = new Schema(
   { collection: "Calander" }
 );
 
-module.exports = mongoose.model("calander", calData);
-
+module.exports = mongoose.model("calander", eventDataSchema);
