@@ -1,0 +1,16 @@
+.login-btn {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center;
+  color: rgb(19, 19, 19) !important;
+  background-color: #e3e1e1 !important;
+  border: 1px solid #ced4da;
+  height: 3.5rem;
+}
+
+.login-btn:hover {
+  background-color: rgb(19, 19, 19) !important;
+  border: 1px solid #ced4da;
+  color: white !important;
+}

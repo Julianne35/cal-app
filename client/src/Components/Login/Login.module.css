@@ -1,0 +1,20 @@
+.header {
+  padding: 1rem;
+  text-align: center;
+}
+
+.register-text {
+  margin-top: 0.5rem;
+  font-size: 0.8rem !important;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: #ced4da;
+}
