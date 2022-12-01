@@ -9,12 +9,12 @@ const PORT = process.env.PORT || 3001;
 require("./models/CalanderData"); //
 const router = require("./routes/routes");
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Hello from server YEY!" });
 });
 
 // Handle GET requests to /api route
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Hello from server YEY ME!" });
 });
 
