@@ -21,10 +21,9 @@ const Register = () => {
             <Form.Control type="number" placeholder="Phone Number" />
           </Form.Group>
           <UserButton
-            cName={style["login-btn"]}
             variant="primary"
             type="submit"
-            href="/success"
+            link="/success"
           >
             CREATE ACCOUNT
           </UserButton>
