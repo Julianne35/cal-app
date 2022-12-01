@@ -24,6 +24,7 @@ const Register = () => {
             cName={style["login-btn"]}
             variant="primary"
             type="submit"
+            href="/success"
           >
             CREATE ACCOUNT
           </UserButton>
