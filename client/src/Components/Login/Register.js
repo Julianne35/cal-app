@@ -23,7 +23,7 @@ const Register = () => {
           <UserButton
             variant="primary"
             type="submit"
-            link="/success"
+            refLink="/success"
           >
             CREATE ACCOUNT
           </UserButton>
