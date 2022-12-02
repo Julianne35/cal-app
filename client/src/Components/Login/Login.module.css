@@ -18,3 +18,11 @@
 .link:hover {
   color: #ced4da;
 }
+
+.btn {
+  background-color: teal !important;
+  margin: 0 0 .2rem 5px;
+  padding: .5rem .6rem .2rem .6rem;
+  border-radius: .2rem;
+  color: whitesmoke;
+}

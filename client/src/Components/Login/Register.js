@@ -20,11 +20,14 @@ const Register = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control type="number" placeholder="Phone Number" />
           </Form.Group>
-          <UserButton
+          {/* <UserButton
             variant="primary"
             type="submit"
             refLink="/success"
           >
+            CREATE ACCOUNT
+          </UserButton> */}
+          <UserButton linkTo={ `/success` } className={style.btn}>
             CREATE ACCOUNT
           </UserButton>
         </Form>
@@ -33,4 +36,4 @@ const Register = () => {
   );
 };
 
-export default Register; 
+export default Register;
