@@ -13,4 +13,4 @@ const UserButton = (props) => {
 
 export default UserButton;
 
-//cannot use with Heroku- Linkn from react router works only, page breats with CANNOT GET / when using href
+//cannot use with Heroku- Link from react router works only, page breats with CANNOT GET / when using href
