@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.padding {
+  margin-bottom: 1rem;
+}
+
 .register-text {
   margin-top: 0.5rem;
   font-size: 0.8rem !important;

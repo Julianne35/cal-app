@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import style from "../UI/UserBtn.module.css";
 
 const UserButton = (props) => {
-  // return <Button className={props.cName}>{props.children}</Button>;
-  // return <Button className={style["login-btn"]} href={`${props.refLink}`}>{props.children}</Button>;
+  const linkClass = style["login-btn"];
+  const path = { pathname: `${props.linkTo}` };
   return (
-    <Link className={style["login-btn"]} to={{pathname: `${props.linkTo}`}}>
+    <Link className={linkClass} to={path}>
       {props.children}
     </Link>
   );

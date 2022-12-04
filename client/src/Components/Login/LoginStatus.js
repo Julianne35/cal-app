@@ -1,14 +1,18 @@
 import React from "react";
 import Wrapper from "../UI/Wrapper";
-import {Image} from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 const LoginStatus = () => {
-  return ( 
+  const center = "text-center";
+  const ImgClass = "img-fluid";
+  const ImgSrc = "https://img.icons8.com/cotton/512/checkmark.png";
+  return (
     <>
       <Wrapper>
-        
-        <Image src="https://img.icons8.com/cotton/512/checkmark.png" className="img-fluid"/>
-        <h3 style={{textAlign:"center"}}>Your account is created! Please verify your e-mail to login</h3>
+        <Image src={ImgSrc} className={ImgClass} />
+        <h3 className={center}>
+          Your account is created! Please verify your e-mail to login
+        </h3>
       </Wrapper>
     </>
   );
