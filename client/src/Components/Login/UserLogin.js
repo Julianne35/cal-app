@@ -1,4 +1,3 @@
-import React from "react";
 import { Form } from "react-bootstrap";
 import Wrapper from "../UI/Wrapper";
 import UserButton from "../UI/UserButton";

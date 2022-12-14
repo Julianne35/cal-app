@@ -1,4 +1,3 @@
-import React from "react";
 import UserButton from "../UI/UserButton";
 import Wrapper from "../UI/Wrapper";
 import style from "../UI/UserBtn.module.css";
