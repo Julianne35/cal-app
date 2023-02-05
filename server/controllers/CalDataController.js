@@ -22,23 +22,23 @@ exports.postData = async (req, res) => {
     city: req.body.city,
     state: req.body.state,
     zipcode: req.body.zipcode,
-    eventtime: req.body.eventtime,
-    eventdate: req.body.eventdate,
-    eventdescription: req.body.eventdescription,
-    eventimage: req.body.eventimage,
-    image: req.body.image,
-    refid: req.body.refid,
-    isliked: req.body.isliked,
-    isoverlaped: req.body.isoverlaped,
-    isapproved: req.body.isapproved,
-    eventlink: req.body.eventlink,
+    // eventtime: req.body.eventtime,
+    // eventdate: req.body.eventdate,
+    // eventdescription: req.body.eventdescription,
+    // eventimage: req.body.eventimage,
+    // image: req.body.image,
+    // refid: req.body.refid,
+    // isliked: req.body.isliked,
+    // isoverlaped: req.body.isoverlaped,
+    // isapproved: req.body.isapproved,
+    // eventlink: req.body.eventlink,
   });
   console.log("created-snapshot:", CalD);
   await CalD.save((err, data) => {
     if (err) {
       console.log("DATA", CalD);
       res.status(500).json({
-        message: "error data was not created",
+        message: "error data was not created, check if all data fields are being called",
       });
     } else {
       console.log("DATA-", data);
@@ -88,6 +88,46 @@ exports.updatePost = (req, res) => {
         res.status(200).json({
           message: "Post Updated",
           data,
+        });
+      }
+    }
+  );
+};
+
+//update event details
+exports.updateDetails = (req, res) => {
+  CalData.findOneAndUpdate(
+    {
+      _id: req.params.calId,
+      details: { $elemMatch: { _id: req.params.detailsId } },
+    }, // FILTER
+    {
+      $set: {
+        "details.$.contactname": req.body.contactname, // UPDATE `-V
+        "details.$.contactphone": req.body.contactphone,
+        "details.$.contactemail": req.body.contactemail,
+        "details.$.eventaddress.$.street": req.body.street,
+        "details.$.eventaddress.$.city": req.body.city,
+        "details.$.eventaddress.$.state": req.body.state,
+        "details.$.eventaddress.$.zipcode": req.body.zipcode,
+        "details.$.eventtime": req.body.eventtime,
+        "details.$.eventdate": req.body.eventdate,
+        "details.$.eventdescription": req.body.eventdescription,
+        "details.$.eventimage.$.image": req.body.image,
+        "details.$.eventimage.$.refid": req.body.refid,
+        "details.$.eventlink": req.body.eventlink,
+      },
+    },
+    { new: true, safe: true, upsert: true },
+    (err, data) => {
+      if (err) {
+        res.status(500).json({
+          message: "update not created",
+        });
+      } else {
+        res.status(200).json({
+          success: true,
+          message: "Post Updated",
         });
       }
     }
