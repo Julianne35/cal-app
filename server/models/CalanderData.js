@@ -16,12 +16,7 @@ const eventDataSchema = new mongoose.Schema(
           trim: true,
           default: "",
         },
-        eventname: {
-          type: String,
-          required: true,
-          trim: true,
-          default: "",
-        },
+
         contactphone: {
           type: Number,
           required: true,

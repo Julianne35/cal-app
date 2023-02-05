@@ -6,33 +6,15 @@ const cors = require("cors");
 const logger = require("morgan");
 const PORT = process.env.PORT || 3001;
 
-require("./models/CalanderData"); //
+require("./models/CalanderData"); 
 const router = require("./routes/routes");
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server YEY!" });
-});
-
-// Handle GET requests to /api route
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server YEY ME!" });
-});
-
-// Have Node serve the files for our built React app
-// app.use(express.static(path.resolve(__dirname, "../client/build")));
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-// All other GET requests not handled before will return our React app
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
+app.use(cors()); // always register CORS before other request handling middleware
+app.use(express.json()); // you only need this once
+
+
 
 const mongoURI =
   "mongodb+srv://heartsong:w6EOdl2n3zKzDozn@heartsong-data-cluster.oibwy7f.mongodb.net/?retryWrites=true&w=majority"; //
@@ -51,10 +33,26 @@ conn.once("open", () => {
 
 conn.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+// Register API routes
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server YEY ME!" });
+});
+
+// Register client routes and middleware
+const CLIENT_BUILD_DIR = path.join(__dirname, '../client/build')
+
+app.use(express.static(CLIENT_BUILD_DIR));
 // DONT DELETE!
 app.use("/", router);
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(CLIENT_BUILD_DIR, "index.html"));
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Express running PORT ${PORT}`);
 });
 
+//to run dynos if app is crashed: Heroku scale web=1

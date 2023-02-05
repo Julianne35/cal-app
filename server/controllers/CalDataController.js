@@ -10,11 +10,12 @@ exports.getData = async (req, res) => {
 };
 
 //create info
-exports.postData = async (req, res) => {
+exports.postData = (req, res) => {
   // console.log(req.body);
   let CalD = new CalData({
+    event: req.body.event,
+    details: req.body.details,
     contactname: req.body.contactname,
-    eventname: req.body.eventname,
     contactphone: req.body.contactphone,
     contactemail: req.body.contactemail,
     eventaddress: req.body.eventaddress,
@@ -34,7 +35,7 @@ exports.postData = async (req, res) => {
     // eventlink: req.body.eventlink,
   });
   console.log("created-snapshot:", CalD);
-  await CalD.save((err, data) => {
+  CalD.save((err, data) => {
     if (err) {
       console.log("DATA", CalD);
       res.status(500).json({
@@ -43,7 +44,7 @@ exports.postData = async (req, res) => {
     } else {
       console.log("DATA-", data);
       res.status(200).json({
-        message: "Created" + CalD + "successfuly!",
+        message: "Created" + CalD + "successfuly! from local",
         data,
       });
     }
