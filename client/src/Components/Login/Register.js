@@ -7,6 +7,7 @@ const Register = () => {
   const h1Class = style.header;
   const padding = style.padding;
   const btn = style.btn;
+  const path = 'success'
   return (
     <>
       <Wrapper>
@@ -21,7 +22,7 @@ const Register = () => {
           <Form.Group className={padding} controlId="formBasicPassword">
             <Form.Control type="number" placeholder="Phone Number" />
           </Form.Group>
-          <UserButton linkTo={ `/success` } className={btn}>
+          <UserButton btnPath={path} className={btn}>
             CREATE ACCOUNT
           </UserButton>
         </Form>

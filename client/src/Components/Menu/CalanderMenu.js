@@ -1,4 +1,4 @@
-import UserButton from "../UI/UserButton";
+import UserLink from "../UI/UserLink";
 import Wrapper from "../UI/Wrapper";
 import style from "../UI/UserBtn.module.css";
 import calStyle from "./CalStyle.module.css";
@@ -13,39 +13,39 @@ const CalanderMenu = () => {
         <h1 className={h1Class}>Welome</h1>
         <h2 className={h2Class}>Choose an action below</h2>
         <div className={divClass}>
-          <UserButton linkTo={`/calander`} className={style.btn}>
+          <UserLink linkTo={`/calander`} className={style.btn}>
             VIEW CALANDER
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/create`} className={style.btn}>
+          <UserLink linkTo={`/create`} className={style.btn}>
             CREATE NEW EVENT
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/view`} className={style.btn}>
+          <UserLink linkTo={`/view`} className={style.btn}>
             VIEW EVENT
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/edit`} className={style.btn}>
+          <UserLink linkTo={`/edit`} className={style.btn}>
             EDIT EVENT
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/manage`} className={style.btn}>
+          <UserLink linkTo={`/manage`} className={style.btn}>
             MANAGE EVENT
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/remove`} className={style.btn}>
+          <UserLink linkTo={`/remove`} className={style.btn}>
             REMOVE EVENT
-          </UserButton>
+          </UserLink>
         </div>
         <div className={divClass}>
-          <UserButton linkTo={`/message`} className={style.btn}>
+          <UserLink linkTo={`/message`} className={style.btn}>
             MESSAGE CENTER
-          </UserButton>
+          </UserLink>
         </div>
       </Wrapper>
     </>
