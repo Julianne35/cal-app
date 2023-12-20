@@ -1,15 +1,17 @@
 import { Form } from "react-bootstrap";
-import Wrapper from "../UI/Wrapper";
-import UserButton from "../UI/UserButton";
 import { Link } from "react-router-dom";
+import Wrapper from "../UI/Wrapper";
+import UserLink from "../UI/UserLink";
 import style from "./Login.module.css";
 
 const UserLogin = () => {
   const h1Class = style.header;
+  const btnClass = style["login-btn"];
   const regText = style["register-text"];
   const padding = style.padding;
-  const regLink = { pathname: `/register` };
+  const logInLink = { pathname: `/register` };
   const regClass = style.link;
+
   return (
     <>
       <Wrapper>
@@ -21,12 +23,12 @@ const UserLogin = () => {
           <Form.Group className={padding} controlId="formBasicPassword">
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <UserButton variant="primary" btnType="submit">
+          <UserLink cName={btnClass} variant="primary" type="submit">
             LOGIN
-          </UserButton>
+          </UserLink>
           <Form.Text>
             <div className={regText}>
-              <Link to={regLink} className={regClass}>
+              <Link to={logInLink} className={regClass}>
                 REGISTER NEW ACCOUNT
               </Link>
             </div>

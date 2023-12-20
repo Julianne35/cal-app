@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import TimePicker from "react-time-picker";
 import DatePicker from "react-date-picker";
 import Wrapper from "../UI/Wrapper";
 import style from "./Create.module.css";
 import globalStyle from "../UI/style.css";
+import UserLink from "../UI/UserLink";
 import { Form, Button, InputGroup } from "react-bootstrap";
-import UserButton from "../UI/UserButton";
 
 const CreateEvent = () => {
+  // let {calId} = useParams(); //calId is an OBJ
+  let navigate = useNavigate();
   const [contactname, setContactName] = useState("");
   const [contactphone, setContactPhone] = useState("");
   const [contactemail, setContactEmail] = useState("");
@@ -20,7 +23,7 @@ const CreateEvent = () => {
   const [state, setState] = useState("NY");
   const [zipcode, setZipCode] = useState("");
 
-  const subLink = `/create`;
+  const subLink = `/review/${event}/${contactname}/${contactphone}/${contactemail}/${street}/${city}/${state}/${zipcode}/`;
 
   const [timeValue, setTimeValue] = useState(new Date());
   const [dateValue, setDateValue] = useState(new Date());
@@ -32,16 +35,23 @@ const CreateEvent = () => {
   const cityInput = style.cityInput;
   const upload = style.uploadBtn;
 
+  //useEffect needed to initate function to push data in details array
+  //NOTE with useEffect remove <React.strict> (happens in dev mode only) or component will render twice
+  //put <React.strict> back on before production.
   useEffect(() => {
     axios({
       method: "POST",
-      url: "http://localhost:3000/post",
+      url: "/post",
+      // url: `http://localhost:3000/post/${calId}`,
       data: {
         event: event,
-        details: details,
+        details: details, //<-- order is important
       },
     }).then((res) => {
       console.log("resp", res.data);
+      navigate(
+        `/review/${event}/${contactname}/${contactphone}/${contactemail}/${street}/${city}/${state}/${zipcode}/`
+      );
     });
   }, [details]);
 
@@ -193,10 +203,13 @@ const CreateEvent = () => {
             <Form.Control as="textarea" placeholder="Event Description" />
           </InputGroup>
 
-          {/* NOTE: data will not POST if you use link prop. in DEV (use history prop) */}
-          <UserButton className={style.btn} onClick={handleSubmit}>
+          <UserLink
+            linkTo={subLink} //<-- works in production not local
+            className={style.btn}
+            onClick={handleSubmit}
+          >
             CREATE AND REVIEW
-          </UserButton>
+          </UserLink>
         </Form>
       </Wrapper>
     </>
@@ -205,11 +218,4 @@ const CreateEvent = () => {
 export default CreateEvent;
 
 //will not post unless all data fields are being called, you cant just test out one field at a time unless you comment data on model on server
-/*  <UserLink
-    linkTo={subLink} <--cannot use if posting to DB (will bypass onClick function)
-    onClick={handleSubmit}
-    >
-    CREATE AND REVIEW   
-    </UserLink> */
-
-// <button type="submit">click me</button>
+// **** in production Link is used, in local btn is used to POST
